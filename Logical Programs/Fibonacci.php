@@ -1,4 +1,6 @@
 <?php
+
+
 $num1 = readline("Enter first num ");
 $num2 = readline("Enter second number ");
 
