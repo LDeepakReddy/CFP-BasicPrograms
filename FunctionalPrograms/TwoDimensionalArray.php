@@ -23,9 +23,9 @@ function display($array,$row,$col)
     }
 }
 
- $TwoDArry= create2DArray($row,$col);
+ $TwoDArray= create2DArray($row,$col);
  echo "\n";
- display($TwoDArry,$row,$col);
+ display($TwoDArray,$row,$col);
  echo "\n";
  
 ?>
