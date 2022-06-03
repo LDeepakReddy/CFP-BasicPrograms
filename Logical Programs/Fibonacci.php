@@ -4,20 +4,21 @@
 $num1 = readline("Enter first num ");
 $num2 = readline("Enter second number ");
 
-$N = readline("Enter the range  :");
+$n = readline("Enter the range  :");
 
+if(is_numeric(($num1) && ($num2) && ($n))){
 
-//echo $num1 . " ";
-
-//echo $num2 . " ";
-
-for($i = 1; $i <=$N; $i++){
+for($i = 1; $i <=$n; $i++){
     $num3 = $num1 +$num2;
     $num1 = $num2;
     $num2 = $num3;
 
     echo $num3 . " ";
 
+}
+}
+else{
+    echo "Enter valid input";
 }
 
 
