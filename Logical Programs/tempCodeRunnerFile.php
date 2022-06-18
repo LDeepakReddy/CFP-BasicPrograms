@@ -1,4 +1,2 @@
 <?php
-$payment = $argv[1];
-$rate = $argv[2];
-$years = $argv[3];
+if (is_array($arr))

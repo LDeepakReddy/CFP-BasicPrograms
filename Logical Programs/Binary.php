@@ -1,77 +1,43 @@
 <?php
 
-class Binary{
+function decimalToBinary($decimalNum)
+{
 
-    static function decToBinary($dec){
-        $bin = "";
-        while ($dec>=1){
-        $bin = ($dec % 2).$bin;
-        $dec = round($dec/2, 0, PHP_ROUND_HALF_DOWN);
-        }
-        return $bin;
+    $nibble1 = [];
+    $nibble2 = [];
+    $swapNibble = [];
+    $i = 0;
+    $k = 0;
+    $binaryArray = [];             
+    while ($decimalNum > 0) {        
+        $binaryArray[$i] = $decimalNum % 2;
+        $decimalNum = (int)$decimalNum / 2;
+        $i++;
+    }
+    
+    for ($j = $i - 1; $j >= 0; $j--) {
+        echo $binaryArray[$j];
     }
 
-     static function swap($bin){
-        if(strlen($bin)%4 !== 0){
-            for ($i=0; $i < (strlen($bin)%4)-4; $i++) { 
-                $bin = "0".$bin;
-            }
+    for($j = 0; $j <=sizeof($binaryArray);$j++){
+        if(sizeof($binaryArray) < 4 ){
+            echo $binaryArray[$j];
+            $nibble1[$j] = $binaryArray[$j]; 
+        }else{
+            echo $binaryArray[$j];
+            $nibble2[$j] = $binaryArray[$j] ;
         }
-        $arrBin = str_split($bin , 1);
-        $size = count($arrBin);
-        $i = $size-4;
-        for ($j=0; $j < 4 ; $j++) { 
-                $temp = $arrBin[$i] ;
-                $arrBin[$i] = $arrBin[$j];
-                $arrBin[$j] = $temp ;
-                $i++;
-        }
-        $bin = implode($arrBin);
-        echo $bin;
-        return $bin ;
-    }   
-
-    static function powOf2($dec){
-        $decArr = str_split($dec);
-       $i = 0 ;
-       $temp = 2**$i;
-       while ($temp < $dec) {
-           if($temp == $dec){
-               return true ;
-           }
-           $i++;
-           $temp = 2**$i;
-       }
-       return false;
     }
+    echo "\n";
 
-    static function binToDec($bin){
-        $binArr = str_split($bin);
-        $dec = 0 ;
-        $j = 0 ;
-        for ($i=count($binArr)-1 ; $i >= 0 ; $i--) { 
-            if($binArr[$i] == 1){
-                $dec = $dec +  2**$j ;
-            }
-            $j++;
-        }
-        echo $dec ;
-        return $dec ;
+    $swapNibble[$k] = $nibble2[$j].$nibble1[$j];
+    for($k = 0; $k <= sizeof($swapNibble); $k++){
+        echo $swapNibble[$k];
     }
-
-
-
-
 }
-$num=readline("Enter a number : ");
-$binary = Binary ::decToBinary($num);
-echo "Binary number is :  $binary\n";
+$decimalNum = readline("please enter a decimal number to convert to binary :  \n");
+echo decimalToBinary($decimalNum) ."\n";
 
-$bin=Binary::swap($bin);
-echo " Binary afer swapping is $bin\n";
-
-$dec= Binary::binToDec($bin);
-echo "after convert into decimal $dec \n";
 
 
 
