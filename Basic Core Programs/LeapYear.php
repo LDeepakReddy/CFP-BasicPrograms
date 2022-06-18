@@ -1,5 +1,6 @@
 <?php
 $year = readline ("Enter Year " );
+if(is_numeric($year)){
 if(($year > 999) && ($year < 10000)){
 
 if(($year % 4 == 0) && ($year % 100 != 0) | ($year % 400 ==0) ) {
@@ -11,5 +12,7 @@ if(($year % 4 == 0) && ($year % 100 != 0) | ($year % 400 ==0) ) {
 else{
     echo "please enter Valid Input";
 }
-
+}else{
+    echo "Enter numeric values only";
+}
 ?>

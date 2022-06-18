@@ -1,15 +1,21 @@
 <?php
-$N = readline("Enter the Number ");
-
-if($N <= 31) {
-    for ($i = 1; $i <= $N; $i++){
-        $Power = pow(2,$i);
-        echo "$Power\n";
+$expo = readline("Enter the Number ");
+$base = 2;
+$power = 1;
+if(is_numeric($expo)){
+if($expo < 31) {
+    for($i = 0;$i < $expo;$i++){
+        $power = $power * $base;
     }
+    echo"$base power of $expo is  $power";
+
+}else{
+    echo "Overflowed int value!";
 }
-else{
-    echo ("Please enter value between 0 to 31 ");
+}else{
+echo "Please enter numeric value only ";
 }
+
 
 
 ?>
