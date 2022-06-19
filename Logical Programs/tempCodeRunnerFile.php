@@ -1,2 +1,2 @@
 <?php
-if (is_array($arr))
+$coupon[$i] = $couponCode;

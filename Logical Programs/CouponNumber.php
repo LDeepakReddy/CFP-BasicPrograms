@@ -2,73 +2,43 @@
 class CouponCode
 {
 
-    public static function generateCouponNumber($characters, $num, $length)
+    public static function generateCouponNumber()
     {
-        $characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        $characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
         $num = readline("Please enter the Number of coupons to be generated : ");
-        $length = 7;
-        $coupon = " ";
+        $length = 12;
+        $coupon = array();
+        $distinct = array();
         echo "Generated coupons  : \n";
-        $max = strlen($characters) - 1;
+        $couponCode =  ' ';
 
-        for ($i = 0; $i < $num; $i++) {
-            for ($j = 0; $j <= $length; $j++) {
-                $random = mt_rand(0, $max);
-                echo "$random";
+        for ($i = 1; $i <= $num; $i++) {
+            for ($k = 1; $k <= $length; $k++) {
+                for ($j = 1; $j <= $length; $j++) {
+                    $random = rand(0, strlen($characters) - 1);
+                    $couponCode = $characters[$random];
+                    //echo $coupon[$j] = $couponCode;
+                    //echo $couponCode;
+                }
+                // echo "\n";
+                /**
+                 * joining array elements with empty string using implode
+                 * evaluating the coupons if they are exist or not in an array
+                 * storing generated code in array
+                 * */
+                $coupon[$k] = $couponCode;
+                $string = implode("", $coupon); //
+
+                if ($distinct[$j] == $string) {
+                    echo "----Coupon Already Exist---- \n";
+                } else {
+                    $distinct[$j] = $string;
+                }
             }
-            echo "\n";
+            echo $distinct[$j] . "\n";
         }
-    }
-
-    public static function alphaNumeric($length)
-    {
-        $arr = array();
-        $chars = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-        $clength   = strlen($chars) - 1;
-        $numbers = readline("Enter number of coupons to be generated ");
-        $id  = '';
-
-        for ($i = 0; $i < $numbers; $i++) {
-            for ($j = 0; $j < $length; $j++) {
-                $id .= $chars[mt_rand(0, $clength)];
-                $arr[$i]= $id;
-                //echo $arr[$i];
-            }
-            
-           
-        }
-
-        //return ($id);
-        echo "\n";
-        echo "$id";
     }
 }
 
 
-//CouponCode ::generateCouponNumber($characters,$num,$length);
-$result =  CouponCode::AlphaNumeric(4);
-echo "$result \n";
-
-
-
-
-
-// function randomString($num,$length){
-//     $string = " ";
-//     $characters = array_merge(range("A","Z"), range("a","z"), range("0","9"));
-//     $max = count($characters)-1;
-//     for ($i = 1; $i < $num; $i++){
-//     for ($j = 0; $j< $length;$j++){
-//         $random = rand(0,$max);
-//         $string = $characters[$random];
-//         echo "$string\n";
-//     }
-// }
-//     return $string;
-   
-
-// }
-
-// randomString($num,$length);
-
-// 
+CouponCode::generateCouponNumber();
